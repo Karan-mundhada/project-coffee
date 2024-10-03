@@ -93,7 +93,7 @@ const HomePage = () => {
 
         {/* Featured Products */}
         <section className="pb-8 bg-white">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-24">
             <h2 className="text-3xl font-bold mb-8 text-center">
               Featured Products
             </h2>

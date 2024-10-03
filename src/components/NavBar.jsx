@@ -22,13 +22,13 @@ const NavBar = () => {
   return (
     <header
       className={`fixed top-4 w-11/12 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 rounded-3xl shadow-lg ${
-        isScrolled ? "bg-blue-800 bg-opacity-90" : "bg-blue-800 bg-opacity-90"
+        isScrolled ? "bg-blue-800 bg-opacity-20" : "bg-blue-800 bg-opacity-0"
       }`}
       style={{ backdropFilter: "blur(10px)" }} // Apply backdrop blur for that translucent effect
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Left side: navigation links (Shop, About) */}
-        <nav className="flex-1 flex justify-end space-x-12">
+        <nav className="hidden md:flex flex-1 justify-end space-x-12">
           <Link to="/shop" className="hover:text-blue-300 transition-colors">
             <ShoppingBag className="inline-block mr-2" size={24} />
             Shop
@@ -51,7 +51,7 @@ const NavBar = () => {
         </div>
 
         {/* Right side: Cart and Login */}
-        <div className="flex-1 flex justify-start space-x-12">
+        <div className="hidden md:flex flex-1 justify-start space-x-12">
           <Link
             to="/cart"
             className="hover:text-blue-300 px-2 transition-colors"
@@ -67,7 +67,7 @@ const NavBar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-800 focus:outline-none"
+          className="md:hidden text-white focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg

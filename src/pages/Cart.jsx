@@ -17,8 +17,8 @@ const CartPage = () => {
       <NavBar />
 
       {/* Main Content */}
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8">Your Cart</h1>
+      <main className="flex-grow container mt-24 px-4 py-8">
+        <h1 className="text-4xl flex-row items-center text-center font-bold mb-8">Your Cart</h1>
 
         {cart.length === 0 ? (
           <p className="text-xl text-center">Your cart is empty.</p>
