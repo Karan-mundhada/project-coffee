@@ -5,8 +5,10 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { products } from "../data/products";
+import { useCart } from "../context/CartContext"; // Import the useCart hook
 
 const HomePage = () => {
+  const { addToCart, removeFromCart, cart } = useCart(); // Access cart context
 
   return (
     <div className="min-h-screen bg-blue-50 text-gray-800">
@@ -44,9 +46,8 @@ const HomePage = () => {
               {/* Render the cards twice for seamless looping */}
               {[
                 "https://images.pexels.com/photos/2711959/pexels-photo-2711959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                "https://via.placeholder.com/800x400?text=Coffee+Machines",
+                "https://images.pexels.com/photos/4050463/pexels-photo-4050463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "https://images.pexels.com/photos/302894/pexels-photo-302894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                // Add more images here
               ].map((src, index) => (
                 <div key={index} className="w-80 h-64 flex-shrink-0">
                   <div
@@ -58,7 +59,7 @@ const HomePage = () => {
               {/* Duplicating cards for seamless effect */}
               {[
                 "https://images.pexels.com/photos/2711959/pexels-photo-2711959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                "https://via.placeholder.com/800x400?text=Coffee+Machines",
+                "https://images.pexels.com/photos/4050463/pexels-photo-4050463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "https://images.pexels.com/photos/302894/pexels-photo-302894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               ].map((src, index) => (
                 <div
@@ -81,9 +82,7 @@ const HomePage = () => {
               transform: translateX(0);
             }
             100% {
-              transform: translateX(
-                -50%
-              ); /* Adjust to half for seamless transition */
+              transform: translateX(-50%);
             }
           }
 
@@ -93,7 +92,7 @@ const HomePage = () => {
         `}</style>
 
         {/* Featured Products */}
-        <section className="py-16 bg-white">
+        <section className="pb-8 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-center">
               Featured Products
@@ -107,15 +106,28 @@ const HomePage = () => {
                   <div className="w-full h-64 bg-blue-300 rounded-md mb-4">
                     <img
                       src={item.image}
-                      alt="Product"
+                      alt={item.name}
                       className="h-full w-full object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-                  <p className="text-gray-600 mb-4 ">{item.name}</p>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
-                    Add to Cart
-                  </button>
+                  <p className="text-gray-600 mb-4">${item.price.toFixed(2)}</p>
+
+                  {cart.find((cartItem) => cartItem.id === item.id) ? (
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+                    >
+                      Remove from Cart
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => addToCart(item)}
+                      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                    >
+                      Add to Cart
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
