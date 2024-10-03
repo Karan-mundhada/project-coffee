@@ -11,20 +11,20 @@ const HomePage = () => {
   const { addToCart, removeFromCart, cart } = useCart(); // Access cart context
 
   return (
-    <div className="min-h-screen bg-blue-50 text-gray-800">
+    <div className="min-h-screen bg-blue-50 text-white">
       {/* Navigation Bar */}
       <NavBar />
 
       {/* Hero Section */}
       <main>
         <section
-          className="py-40 text-center bg-cover bg-center mt-16"
+          className="py-40 text-center bg-cover bg-center mt-0"
           style={{
             backgroundImage:
               "url('https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
           }}
         >
-          <h1 className="text-5xl font-bold mb-6 text-white drop-shadow-lg">
+          <h1 className="text-5xl font-bold mt-6 mb-6 text-white drop-shadow-lg">
             Discover the Perfect Brew
           </h1>
           <p className="text-xl mb-8 text-white">

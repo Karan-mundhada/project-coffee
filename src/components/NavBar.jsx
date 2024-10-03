@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Coffee,
-  ShoppingCart,
-  User,
-  ShoppingBag,
-  Store,
-} from "lucide-react";
+import { Coffee, ShoppingCart, User, ShoppingBag, Store } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -27,9 +21,10 @@ const NavBar = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 text-white ${
-        isScrolled ? "bg-blue-900 bg-opacity-80" : "bg-blue-900"
+      className={`fixed top-4 w-11/12 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 rounded-3xl shadow-lg ${
+        isScrolled ? "bg-blue-800 bg-opacity-90" : "bg-blue-800 bg-opacity-90"
       }`}
+      style={{ backdropFilter: "blur(10px)" }} // Apply backdrop blur for that translucent effect
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Left side: navigation links (Shop, About) */}
@@ -48,9 +43,9 @@ const NavBar = () => {
         <div className="flex-1 text-center">
           <Link
             to="/"
-            className=" hover:text-blue-300 text-4xl font-bold flex items-center justify-center"
+            className="hover:text-blue-300 text-4xl font-bold flex items-center justify-center"
           >
-            <Coffee className="inline-block mr-2" sixe={32} />
+            <Coffee className="inline-block mr-2" size={32} />
             BrewMaster
           </Link>
         </div>
@@ -72,7 +67,7 @@ const NavBar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-gray-800 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -94,7 +89,7 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <ul className="md:hidden absolute top-16 left-0 w-full bg-blue-900 text-white flex flex-col items-center space-y-4 py-4">
+        <ul className="md:hidden absolute top-16 left-0 w-full bg-white text-black flex flex-col items-center space-y-4 py-4 rounded-b-3xl shadow-lg">
           <li>
             <Link to="/shop" onClick={() => setIsOpen(false)}>
               Shop
